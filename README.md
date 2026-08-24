@@ -69,33 +69,25 @@ Curated portfolio of production applications, distributed platforms, and researc
 
 ```bash
 Personna/
-├── public/
-│   ├── Parth_Agrawal_CV.pdf       # Downloadable CV PDF
-│   └── Parth_Agrawal_Resume.pdf   # Downloadable Resume PDF
-├── src/
-│   ├── assets/                    # Optimized media & portraits
-│   ├── components/
-│   │   ├── NetflixPreloader.jsx   # Cinematic intro preloader
-│   │   ├── CustomCursor.jsx       # Global mouse follower spotlight
-│   │   ├── Hero.jsx               # 3D interactive hero section & navbar
-│   │   ├── About.jsx              # Episode 01: Bio & bento grid
-│   │   ├── Expertise.jsx          # Episode 02: Director's Cut technical capabilities
-│   │   ├── Skills.jsx             # Episode 03: 3D interactive skills carousel
-│   │   ├── Projects.jsx           # Episode 04: Project cards (Desktop 3D & Mobile touch)
-│   │   ├── Contact.jsx            # Episode 05: Interactive contact form
-│   │   ├── Footer.jsx             # Terminal tagline & profile links
-│   │   ├── ThemeSwitcher.jsx      # Header dropdown theme controller
-│   │   └── FloatingThemeBar.jsx   # Fixed floating quick-theme widget
-│   ├── context/
-│   │   └── ThemeContext.jsx       # Theme state, presets, and localStorage sync
-│   ├── utils/
-│   │   └── pdfHelper.js           # Dual-action open and download helper
-│   ├── App.jsx                    # Root app layout & theme provider wrapper
-│   ├── main.jsx                   # React DOM mount entry point
-│   └── index.css                  # Global design tokens & dynamic CSS theme engine
-├── index.html                     # HTML root entry with SEO meta tags
-├── package.json                   # Dependencies and npm scripts
-├── vite.config.js                 # Vite bundler configuration
+├── frontend/                      # React 19 + Vite Frontend
+│   ├── public/                    # Static assets & downloadable PDFs
+│   ├── src/
+│   │   ├── components/            # UI components (Contact.jsx, Hero.jsx, etc.)
+│   │   ├── context/               # Theme context and state
+│   │   ├── utils/                 # PDF and helper utilities
+│   │   ├── App.jsx                # Main layout
+│   │   ├── main.jsx               # Entry point
+│   │   └── index.css              # Styling and design system tokens
+│   ├── vite.config.js             # Vite config with backend API proxy
+│   └── package.json               # Frontend dependencies
+├── backend/                       # Node.js + Express Contact Backend
+│   ├── data/
+│   │   └── messages.json          # Persistent JSON store for submitted messages
+│   ├── server.js                  # Express API server (POST /api/contact, GET /api/contact)
+│   ├── .env                       # Backend environment variables (PORT 5001)
+│   ├── .env.example
+│   └── package.json               # Backend dependencies
+├── package.json                   # Root orchestrator (runs frontend & backend together)
 └── README.md                      # Project documentation
 ```
 
@@ -107,7 +99,7 @@ Personna/
 - [Node.js](https://nodejs.org/) (version 18+ recommended)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) / [pnpm](https://pnpm.io/)
 
-### Installation
+### Quick Start (Run Both Frontend & Backend)
 
 1. **Clone the repository**:
    ```bash
@@ -115,26 +107,23 @@ Personna/
    cd Personna
    ```
 
-2. **Install dependencies**:
+2. **Install all dependencies (Root, Frontend & Backend)**:
    ```bash
-   npm install
+   npm run install:all
    ```
 
-3. **Start the local development server**:
+3. **Start both Frontend and Backend concurrently**:
    ```bash
    npm run dev
    ```
-   Open your browser at `http://localhost:5173`.
+   - **Frontend**: [http://localhost:5173](http://localhost:5173)
+   - **Backend API**: [http://localhost:5001](http://localhost:5001)
 
-4. **Build for production**:
-   ```bash
-   npm run build
-   ```
+### Running Separately
 
-5. **Preview production build**:
-   ```bash
-   npm run preview
-   ```
+- **Frontend Only**: `npm run dev:frontend` (or `cd frontend && npm run dev`)
+- **Backend Only**: `npm run dev:backend` (or `cd backend && npm run dev`)
+- **Build Frontend**: `npm run build:frontend`
 
 ---
 

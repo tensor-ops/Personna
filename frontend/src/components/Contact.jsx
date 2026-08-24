@@ -13,6 +13,12 @@ const Contact = () => {
     permission: false
   });
 
+  const [status, setStatus] = useState({
+    type: '', // 'success' | 'error' | ''
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"]
@@ -28,21 +34,58 @@ const Contact = () => {
       ...prev,
       [id]: type === 'checkbox' ? checked : value
     }));
+    // Clear error message when user starts typing again
+    if (status.type === 'error') {
+      setStatus({ type: '', message: '' });
+    }
   };
 
   // Handle form submission logic
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.permission) {
-      alert("Please accept the contact permission checkbox.");
+      setStatus({
+        type: 'error',
+        message: 'Please accept the contact permission checkbox.'
+      });
       return;
     }
 
-    console.log("Form Data Submitted Successfully:", formData);
-    alert(`Thanks ${formData.firstName}! Message captured successfully.`);
-    
-    setFormData({ firstName: '', lastName: '', email: '', message: '', permission: false });
+    setIsSubmitting(true);
+    setStatus({ type: '', message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to transmit message. Please try again.');
+      }
+
+      setStatus({
+        type: 'success',
+        message: `Transmission received! Thank you, ${formData.firstName}. Your signal was captured.`
+      });
+
+      // Reset form on success
+      setFormData({ firstName: '', lastName: '', email: '', message: '', permission: false });
+    } catch (err) {
+      console.error('Contact submission error:', err);
+      setStatus({
+        type: 'error',
+        message: err.message || 'Transmission failed. Ensure backend server is running.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -159,10 +202,27 @@ const Contact = () => {
               </div>
 
               {/* Right text & button */}
-              <div className="flex-1 flex flex-col gap-8 text-xs text-white/50 font-light">
+              <div className="flex-1 flex flex-col gap-6 text-xs text-white/50 font-light">
                 <p className="leading-relaxed max-w-[400px]">
                   This site is protected by security protocols and industry-standard privacy guidelines.
                 </p>
+
+                {/* Status Feedback Banner */}
+                {status.message && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`p-3.5 rounded text-xs font-mono border flex items-center gap-3 ${
+                      status.type === 'success'
+                        ? 'bg-green-950/40 border-green-500/40 text-green-400 shadow-[0_0_15px_rgba(34,197,94,0.2)]'
+                        : 'bg-red-950/40 border-red-500/40 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.2)]'
+                    }`}
+                  >
+                    <span className={`w-2 h-2 rounded-full ${status.type === 'success' ? 'bg-green-500' : 'bg-red-500'} animate-pulse`}></span>
+                    <span>{status.message}</span>
+                  </motion.div>
+                )}
+
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6">
                   <p className="max-w-[250px] leading-relaxed">
                     Ready to start a project or collaboration? Send a direct signal.
@@ -170,12 +230,29 @@ const Contact = () => {
                   
                   <button 
                     type="submit" 
-                    className="px-8 py-3.5 rounded bg-red-600 text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-red-700 transition-all duration-300 group whitespace-nowrap shadow-[0_0_20px_rgba(229,9,20,0.6)] hover:scale-105"
+                    disabled={isSubmitting}
+                    className={`px-8 py-3.5 rounded bg-red-600 text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 transition-all duration-300 group whitespace-nowrap shadow-[0_0_20px_rgba(229,9,20,0.6)] ${
+                      isSubmitting
+                        ? 'opacity-60 cursor-not-allowed'
+                        : 'hover:bg-red-700 hover:scale-105'
+                    }`}
                   >
-                    Send Message
-                    <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                        </svg>
+                        Transmitting...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </>
+                    )}
                   </button>
                 </div>
               </div>

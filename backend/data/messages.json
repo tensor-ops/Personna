@@ -1,0 +1,12 @@
+[
+  {
+    "id": "2209555b-6003-432c-883f-134193bb198e",
+    "firstName": "Bruce",
+    "lastName": "Wayne",
+    "email": "bruce@wayneenterprises.com",
+    "message": "Need a cinematic portfolio for Wayne Enterprises.",
+    "permission": true,
+    "createdAt": "2026-08-24T08:44:08.335Z",
+    "clientIp": "::1"
+  }
+]
