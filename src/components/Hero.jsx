@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import pictureImg from '../assets/Portfolio/picture.png';
 import { openAndDownloadPdf } from '../utils/pdfHelper';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const Hero = () => {
   const sectionRef = useRef(null);
@@ -219,10 +220,10 @@ const Hero = () => {
             </p>
 
             {/* Action Button Set */}
-            <div className="hero-anim-item flex flex-wrap items-center gap-3 pt-2">
+            <div className="hero-anim-item flex items-center gap-4 pt-2">
               <a
                 href="#projects"
-                className="px-6 py-3.5 bg-white text-black font-bold text-xs uppercase tracking-widest rounded hover:bg-red-600 hover:text-white transition-all duration-300 shadow-[0_10px_35px_rgba(255,255,255,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95"
+                className="px-8 py-3.5 bg-white text-black font-bold text-xs uppercase tracking-widest rounded hover:bg-red-600 hover:text-white transition-all duration-300 shadow-[0_10px_35px_rgba(255,255,255,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
@@ -230,20 +231,8 @@ const Hero = () => {
                 View Projects
               </a>
               <a
-                href="/Parth_Agrawal_CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => openAndDownloadPdf(e, '/Parth_Agrawal_CV.pdf', 'Parth_Agrawal_CV.pdf')}
-                className="px-6 py-3.5 bg-red-600/90 text-white font-bold text-xs uppercase tracking-widest rounded hover:bg-red-700 transition-all duration-300 shadow-[0_10px_30px_rgba(229,9,20,0.5)] flex items-center gap-2 hover:scale-105 active:scale-95 border border-red-500/40 cursor-pointer"
-              >
-                <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Download CV
-              </a>
-              <a
                 href="#contact"
-                className="px-6 py-3.5 bg-neutral-900/80 text-white border border-white/20 font-bold text-xs uppercase tracking-widest rounded hover:bg-neutral-800 transition-all duration-300 shadow-xl backdrop-blur-md flex items-center gap-2 hover:scale-105 active:scale-95"
+                className="px-8 py-3.5 bg-neutral-900/80 text-white border border-white/20 font-bold text-xs uppercase tracking-widest rounded hover:bg-neutral-800 transition-all duration-300 shadow-xl backdrop-blur-md flex items-center gap-2 hover:scale-105 active:scale-95"
               >
                 <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" />
@@ -261,22 +250,23 @@ const Hero = () => {
               ref={cardRef}
               className="relative group transform-gpu transition-transform duration-100 ease-out will-change-transform"
             >
-              {/* Cinematic Red Neon Back Glow */}
-              <div className="absolute -inset-3 bg-gradient-to-r from-red-600/70 via-rose-600/40 to-purple-600/20 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
+              {/* Cinematic Neon Back Glow */}
+              <div 
+                className="absolute -inset-3 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"
+                style={{ background: 'radial-gradient(circle, var(--accent-glow) 0%, var(--accent-glow-subtle) 60%, transparent 80%)' }}
+              ></div>
 
               {/* Poster Card with Glossy Sheen */}
-              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#141414]/90 backdrop-blur-2xl rounded-2xl border border-red-600/40 shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden">
+              <div 
+                className="relative w-[280px] md:w-[320px] p-3.5 bg-[#141414]/90 backdrop-blur-2xl rounded-2xl border shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden"
+                style={{ borderColor: 'var(--accent-border)' }}
+              >
 
                 {/* Dynamic Specular Glare Layer */}
                 <div
                   ref={glareRef}
                   className="absolute inset-[-50%] w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none transform-gpu z-40"
                 ></div>
-
-                {/* Netflix Series Tag */}
-                <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-red-600 text-white font-mono text-[10px] font-bold tracking-widest rounded shadow-xl">
-                  FEATURED DEV
-                </div>
 
                 <img
                   src={pictureImg}
@@ -319,8 +309,14 @@ const Hero = () => {
 
       {/* --- NETFLIX-THEMED DEVELOPER NAVBAR --- */}
       <header className="absolute top-0 left-0 z-50 w-full max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between pointer-events-auto">
-        <div className="text-2xl font-black text-red-600 tracking-tighter flex items-center gap-2 drop-shadow-[0_2px_15px_rgba(229,9,20,0.9)]">
-          PARTH AGRAWAL<span className="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
+        <div 
+          className="text-2xl font-black tracking-tighter flex items-center gap-2"
+          style={{
+            color: 'var(--accent-color)',
+            filter: 'drop-shadow(0 2px 15px var(--accent-glow))'
+          }}
+        >
+          PARTH<span className="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
         </div>
         <nav className="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-white/80">
           <a href="#home" className="hover:text-red-500 transition-colors">Home</a>
@@ -331,11 +327,12 @@ const Hero = () => {
           <a href="#contact" className="hover:text-red-500 transition-colors">Contact</a>
         </nav>
         <div className="flex items-center gap-3">
+          <ThemeSwitcher />
           <a
             href="/Parth_Agrawal_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => openAndDownloadPdf(e, '/Parth_Agrawal_Resume.pdf', 'Parth_Agrawal_Resume.pdf')}
+            onClick={() => openAndDownloadPdf('/Parth_Agrawal_Resume.pdf', 'Parth_Agrawal_Resume.pdf')}
             className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 backdrop-blur-md hover:scale-105 active:scale-95 cursor-pointer"
           >
             <svg className="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">

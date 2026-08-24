@@ -33,7 +33,7 @@ const skillCategories = [
     title: 'Algorithmic Problem Solving', 
     desc: 'Optimizing data structures and solving complex algorithmic challenges across competitive programming platforms.', 
     tag: 'COMPETITIVE',
-    skills: ['Data Structures', 'Algorithms', 'LeetCode', 'CodeChef', 'GFG'] 
+    skills: ['Data Structures', 'Algorithms', 'LeetCode (1913)', 'C++', 'System Design'] 
   },
   { 
     title: 'Tools & Ecosystem', 
@@ -174,16 +174,17 @@ const Skills = () => {
       ref={sectionRef} 
       className="relative w-full h-screen bg-[#0b0b0b] text-white overflow-hidden flex items-center justify-center md:[perspective:1000px] select-none"
     >
-      {/* Dynamic Netflix Dark Background Vignettes */}
+      {/* Dynamic Theme Dark Background Vignettes */}
       {skillCategories.map((_, i) => (
         <div 
           key={i}
           ref={el => bgRefs.current[i] = el}
-          className="absolute inset-0 z-0 pointer-events-none opacity-0 bg-gradient-to-tr from-black via-[#140203] to-black"
+          className="absolute inset-0 z-0 pointer-events-none opacity-0"
+          style={{ background: 'radial-gradient(circle at 50% 50%, var(--accent-glow-subtle) 0%, #050505 85%)' }}
         />
       ))}
 
-      {/* Massive Background Typography (Netflix Red & White Outline) */}
+      {/* Massive Background Typography (Dynamic Theme Outline) */}
       <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
         {skillCategories.map((_, i) => (
           <h1 
@@ -191,7 +192,7 @@ const Skills = () => {
             ref={el => textRefs.current[i] = el}
             className="absolute text-[22vw] md:text-[18vw] font-black uppercase text-transparent leading-none tracking-tighter mix-blend-overlay"
             style={{ 
-               WebkitTextStroke: `2px ${i % 2 === 0 ? 'rgba(229,9,20,0.3)' : 'rgba(255,255,255,0.15)'}`,
+               WebkitTextStroke: `2px ${i % 2 === 0 ? 'var(--accent-border)' : 'rgba(255,255,255,0.15)'}`,
                opacity: 0 
             }}
           >
@@ -209,14 +210,24 @@ const Skills = () => {
           <div 
             key={i}
             ref={el => cardsRef.current[i] = el}
-            className="md:absolute relative shrink-0 snap-center w-[82vw] sm:w-[360px] md:w-[440px] h-[460px] md:h-[540px] rounded-[32px] p-8 md:p-10 bg-[#141414]/95 backdrop-blur-2xl border border-white/15 flex flex-col justify-between overflow-hidden group shadow-[0_30px_60px_rgba(0,0,0,0.9)] hover:border-red-600/80 transition-colors duration-500"
+            className="md:absolute relative shrink-0 snap-center w-[82vw] sm:w-[360px] md:w-[440px] h-[460px] md:h-[540px] rounded-[32px] p-8 md:p-10 bg-[#141414]/95 backdrop-blur-2xl border border-white/15 flex flex-col justify-between overflow-hidden group shadow-[0_30px_60px_rgba(0,0,0,0.9)] hover:border-[var(--accent-color)] transition-colors duration-500"
           >
-            {/* Inner Red Glossy Reflection */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-red-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />
+            {/* Inner Glossy Reflection */}
+            <div 
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20"
+              style={{ background: 'radial-gradient(circle at top right, var(--accent-glow-subtle), transparent 70%)' }}
+            />
             
             {/* Top Card Metadata */}
             <div className="flex items-center justify-between relative z-10">
-              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-red-500 bg-red-600/10 px-3 py-1 rounded border border-red-600/20">
+              <span 
+                className="text-[10px] font-mono font-bold tracking-widest uppercase px-3 py-1 rounded border"
+                style={{
+                  color: 'var(--accent-color)',
+                  backgroundColor: 'var(--accent-glow-subtle)',
+                  borderColor: 'var(--accent-border)'
+                }}
+              >
                 {category.tag}
               </span>
               <span className="text-xs font-mono text-white/40">
@@ -226,7 +237,7 @@ const Skills = () => {
 
             {/* Middle Title & Description */}
             <div className="space-y-4 relative z-10 my-auto">
-              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight group-hover:text-red-500 transition-colors duration-300">
+              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight group-hover:text-[var(--accent-color)] transition-colors duration-300">
                 {category.title}
               </h3>
               <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
@@ -239,7 +250,7 @@ const Skills = () => {
               {category.skills.map((skill, sIdx) => (
                 <span 
                   key={sIdx}
-                  className="text-xs font-mono text-white/80 bg-white/5 border border-white/10 px-3 py-1 rounded group-hover:border-red-600/30 transition-colors"
+                  className="text-xs font-mono text-white/80 bg-white/5 border border-white/10 px-3 py-1 rounded group-hover:border-[var(--accent-border)] transition-colors"
                 >
                   {skill}
                 </span>
@@ -247,7 +258,13 @@ const Skills = () => {
             </div>
 
             {/* Bottom Glow Accent */}
-            <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-red-600 group-hover:shadow-[0_0_15px_#E50914] transition-all" />
+            <div 
+              className="absolute bottom-4 right-4 w-2 h-2 rounded-full transition-all group-hover:scale-125"
+              style={{
+                backgroundColor: 'var(--accent-color)',
+                boxShadow: '0 0 15px var(--accent-color)'
+              }}
+            />
           </div>
         ))}
       </div>

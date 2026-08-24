@@ -74,7 +74,7 @@ const projectsData = [
   {
     title: "Algorithmic Suite",
     category: "Competitive Programming",
-    description: "High-performance problem solving with 783+ solved challenges, LeetCode 1913 Rating (Top 4.18%), CodeChef 1534, and Codeforces 1255.",
+    description: "High-performance problem solving with 783+ solved challenges, LeetCode Knight 1913 Rating (Top 4.18%), and contest rank 268.",
     tags: ["C++", "Data Structures", "Algorithms", "LeetCode 1913"],
     match: "100%",
     episode: "S01 E08",

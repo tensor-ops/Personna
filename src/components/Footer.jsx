@@ -1,5 +1,4 @@
 import React from 'react';
-import { openAndDownloadPdf } from '../utils/pdfHelper';
 
 const Footer = () => {
   return (
@@ -9,7 +8,13 @@ const Footer = () => {
         {/* Top Section: Brand & Quick Links */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-12 border-b border-white/10">
           <div className="space-y-2">
-            <div className="text-2xl font-black text-red-600 tracking-tighter flex items-center gap-2 drop-shadow-[0_2px_15px_rgba(220,38,38,0.9)]">
+            <div 
+              className="text-2xl font-black tracking-tighter flex items-center gap-2"
+              style={{
+                color: 'var(--accent-color)',
+                filter: 'drop-shadow(0 2px 15px var(--accent-glow))'
+              }}
+            >
               PARTH<span className="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
             </div>
             <p className="text-xs font-mono text-white/50 tracking-widest uppercase">
@@ -19,12 +24,12 @@ const Footer = () => {
 
           {/* Quick Navigation Links */}
           <nav className="flex flex-wrap gap-6 md:gap-8 text-xs font-mono uppercase tracking-widest text-white/70">
-            <a href="#home" className="hover:text-red-500 transition-colors">Home</a>
-            <a href="#about" className="hover:text-red-500 transition-colors">About</a>
-            <a href="#expertise" className="hover:text-red-500 transition-colors">Expertise</a>
-            <a href="#skills" className="hover:text-red-500 transition-colors">Skills</a>
-            <a href="#projects" className="hover:text-red-500 transition-colors">Projects</a>
-            <a href="#contact" className="hover:text-red-500 transition-colors">Contact</a>
+            <a href="#home" className="hover:text-[var(--accent-color)] transition-colors">Home</a>
+            <a href="#about" className="hover:text-[var(--accent-color)] transition-colors">About</a>
+            <a href="#expertise" className="hover:text-[var(--accent-color)] transition-colors">Expertise</a>
+            <a href="#skills" className="hover:text-[var(--accent-color)] transition-colors">Skills</a>
+            <a href="#projects" className="hover:text-[var(--accent-color)] transition-colors">Projects</a>
+            <a href="#contact" className="hover:text-[var(--accent-color)] transition-colors">Contact</a>
           </nav>
         </div>
 
@@ -35,7 +40,7 @@ const Footer = () => {
               href="https://github.com/parth506"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-red-500 transition-colors uppercase tracking-wider"
+              className="hover:text-[var(--accent-color)] transition-colors uppercase tracking-wider"
             >
               GitHub (parth506) //
             </a>
@@ -43,7 +48,7 @@ const Footer = () => {
               href="https://linkedin.com/in/parthagrawal129"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-red-500 transition-colors uppercase tracking-wider"
+              className="hover:text-[var(--accent-color)] transition-colors uppercase tracking-wider"
             >
               LinkedIn //
             </a>
@@ -51,43 +56,9 @@ const Footer = () => {
               href="https://leetcode.com/u/kanha_12/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-red-500 transition-colors uppercase tracking-wider"
+              className="hover:text-[var(--accent-color)] transition-colors uppercase tracking-wider"
             >
               LeetCode (1913) //
-            </a>
-            <a
-              href="https://www.codechef.com/users/be_cool_506"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-500 transition-colors uppercase tracking-wider"
-            >
-              CodeChef //
-            </a>
-            <a
-              href="https://codeforces.com/profile/kanha2"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-500 transition-colors uppercase tracking-wider"
-            >
-              Codeforces //
-            </a>
-            <a
-              href="/Parth_Agrawal_CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => openAndDownloadPdf(e, '/Parth_Agrawal_CV.pdf', 'Parth_Agrawal_CV.pdf')}
-              className="text-red-500 hover:text-red-400 font-bold transition-colors uppercase tracking-wider flex items-center gap-1 cursor-pointer"
-            >
-              Download CV (PDF) //
-            </a>
-            <a
-              href="/Parth_Agrawal_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => openAndDownloadPdf(e, '/Parth_Agrawal_Resume.pdf', 'Parth_Agrawal_Resume.pdf')}
-              className="text-red-500 hover:text-red-400 font-bold transition-colors uppercase tracking-wider flex items-center gap-1 cursor-pointer"
-            >
-              Download Resume (PDF) //
             </a>
           </div>
 
@@ -99,7 +70,12 @@ const Footer = () => {
         {/* Bottom Copyright & Cinematic Tagline */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-white/5 text-[11px] font-mono text-white/40 uppercase tracking-widest">
           <p>&copy; {new Date().getFullYear()} Parth Agrawal. All Rights Reserved.</p>
-          <p className="text-red-500/80">STREAMING WORLDWIDE &bull; BUILT WITH REACT & GSAP</p>
+          <p 
+            className="font-bold tracking-widest transition-colors duration-300"
+            style={{ color: 'var(--accent-color)' }}
+          >
+            STREAMING WORLDWIDE &bull; BUILT WITH REACT & GSAP
+          </p>
         </div>
 
       </div>

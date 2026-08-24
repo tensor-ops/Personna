@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
 import NetflixPreloader from './components/NetflixPreloader';
 import CustomCursor from './components/CustomCursor';
+import FloatingThemeBar from './components/FloatingThemeBar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Expertise from './components/Expertise';
@@ -13,22 +15,27 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <main className="bg-[#050505] min-h-screen text-white relative cursor-none selection:bg-red-600 selection:text-white">
-      {/* Cinematic Preloader */}
-      {loading && <NetflixPreloader onComplete={() => setLoading(false)} />}
+    <ThemeProvider>
+      <main className="bg-[#050505] min-h-screen text-white relative cursor-none">
+        {/* Cinematic Preloader */}
+        {loading && <NetflixPreloader onComplete={() => setLoading(false)} />}
 
-      {/* Global Mouse Hover Effects & Spotlight across ALL sections */}
-      <CustomCursor />
+        {/* Global Mouse Hover Effects & Spotlight across ALL sections */}
+        <CustomCursor />
 
-      {/* Portfolio Sections */}
-      <Hero />
-      <About />
-      <Expertise />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
-    </main>
+        {/* Global Floating Quick Theme Switcher Bar (Always visible on all screens) */}
+        <FloatingThemeBar />
+
+        {/* Portfolio Sections */}
+        <Hero />
+        <About />
+        <Expertise />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
+      </main>
+    </ThemeProvider>
   );
 }
 
