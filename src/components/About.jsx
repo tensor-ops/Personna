@@ -114,10 +114,24 @@ const About = () => {
               </p>
             </div>
             
-            <div className="pt-8 flex flex-wrap gap-2 relative z-10">
-              <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">IIIT Allahabad (CGPA 9.24)</span>
-              <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">Network ML & Security</span>
-              <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">Full-Stack & Distributed Systems</span>
+            <div className="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">IIIT Allahabad (CGPA 9.24)</span>
+                <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">Network ML & Security</span>
+                <span className="px-3.5 py-1.5 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/80">Full-Stack & Distributed Systems</span>
+              </div>
+
+              <a
+                href="/Parth_Agrawal_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 px-4 py-2 rounded bg-red-600 hover:bg-red-700 text-white text-xs font-mono uppercase font-bold tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(229,9,20,0.5)] flex items-center gap-2 hover:scale-105 active:scale-95"
+              >
+                <svg className="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Get CV (PDF)
+              </a>
             </div>
           </div>
 

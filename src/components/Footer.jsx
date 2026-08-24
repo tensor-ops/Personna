@@ -39,7 +39,7 @@ const Footer = () => {
               GitHub (parth506) //
             </a>
             <a
-              href="https://linkedin.com/in/parth-agrawal"
+              href="https://linkedin.com/in/parthagrawal129"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-red-500 transition-colors uppercase tracking-wider"
@@ -47,7 +47,7 @@ const Footer = () => {
               LinkedIn //
             </a>
             <a
-              href="https://leetcode.com/u/parth506"
+              href="https://leetcode.com/u/kanha_12/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-red-500 transition-colors uppercase tracking-wider"
@@ -55,7 +55,7 @@ const Footer = () => {
               LeetCode (1913) //
             </a>
             <a
-              href="https://www.codechef.com/users/parth506"
+              href="https://www.codechef.com/users/be_cool_506"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-red-500 transition-colors uppercase tracking-wider"
@@ -63,12 +63,28 @@ const Footer = () => {
               CodeChef //
             </a>
             <a
-              href="https://codeforces.com/profile/parth506"
+              href="https://codeforces.com/profile/kanha2"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-red-500 transition-colors uppercase tracking-wider"
             >
               Codeforces //
+            </a>
+            <a
+              href="/Parth_Agrawal_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-500 hover:text-red-400 font-bold transition-colors uppercase tracking-wider flex items-center gap-1"
+            >
+              Download CV (PDF) //
+            </a>
+            <a
+              href="/Parth_Agrawal_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-500 hover:text-red-400 font-bold transition-colors uppercase tracking-wider flex items-center gap-1"
+            >
+              Download Resume (PDF) //
             </a>
           </div>
 

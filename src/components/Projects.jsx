@@ -12,7 +12,8 @@ const projectsData = [
     description: "AI-powered quick-commerce platform using Ollama (Mistral 7B) & DynamoDB to convert natural language queries into optimized baskets.",
     tags: ["Next.js", "TypeScript", "Ollama (Mistral 7B)", "AWS DynamoDB"],
     match: "99%",
-    episode: "S01 E01"
+    episode: "S01 E01",
+    github: "https://github.com/Siddhartha3103/AmazonNew"
   },
   {
     title: "DailyForge OS",
@@ -20,7 +21,8 @@ const projectsData = [
     description: "Grounded multi-agent AI system combining behavioral telemetry, intent routing, habit analytics, and automated coaching workflows.",
     tags: ["Multi-Agent AI", "LLMs", "TypeScript", "Telemetry"],
     match: "99%",
-    episode: "S01 E02"
+    episode: "S01 E02",
+    github: "https://github.com/tensor-ops/DailyForge"
   },
   {
     title: "Encrypted DNS Intelligence",
@@ -28,7 +30,8 @@ const projectsData = [
     description: "ML research platform investigating DoH, DoT, and DoQ traffic observability, residual metadata, and protocol fingerprinting.",
     tags: ["Python", "Machine Learning", "Network Security", "DoH/DoQ"],
     match: "98%",
-    episode: "S01 E03"
+    episode: "S01 E03",
+    github: "https://github.com/tensor-ops/encrypted-dns-lab"
   },
   {
     title: "Manobala AI",
@@ -36,7 +39,9 @@ const projectsData = [
     description: "AI-integrated support platform combining Gemini-powered conversational assistance, community channels, and consultation workflows.",
     tags: ["React", "Node.js", "MongoDB", "Gemini API"],
     match: "97%",
-    episode: "S01 E04"
+    episode: "S01 E04",
+    live: "https://manobala.netlify.app/",
+    github: "https://github.com/Manobala-GSC/Manobala"
   },
   {
     title: "Visa Analytics Suite",
@@ -44,7 +49,9 @@ const projectsData = [
     description: "React 19 + TypeScript component library (@vap/feediq-tool) adopted by Visa's Acceptance Platform with Redis caching & ClickHouse.",
     tags: ["React 19", "TypeScript", "TanStack Query", "Redis", "ClickHouse"],
     match: "99%",
-    episode: "S01 E05"
+    episode: "S01 E05",
+    live: "https://www.npmjs.com/package/@vap/feediq-tool",
+    github: "https://github.com/parth506"
   },
   {
     title: "YatriSewa Platform",
@@ -52,7 +59,8 @@ const projectsData = [
     description: "Full-stack public infrastructure platform integrating SOS emergency assistance workflows and high-volume transactional booking.",
     tags: ["React", "Node.js", "Express", "Emergency SOS"],
     match: "98%",
-    episode: "S01 E06"
+    episode: "S01 E06",
+    github: "https://github.com/parth506/YatriSewa"
   },
   {
     title: "Tor Traffic Classifier",
@@ -60,7 +68,8 @@ const projectsData = [
     description: "Statistical and flow-based machine learning classification of Tor network traffic under encryption and anonymity constraints.",
     tags: ["Python", "Machine Learning", "Traffic Analysis", "Security"],
     match: "96%",
-    episode: "S01 E07"
+    episode: "S01 E07",
+    github: "https://github.com/tensor-ops"
   },
   {
     title: "Algorithmic Suite",
@@ -68,7 +77,9 @@ const projectsData = [
     description: "High-performance problem solving with 783+ solved challenges, LeetCode 1913 Rating (Top 4.18%), CodeChef 1534, and Codeforces 1255.",
     tags: ["C++", "Data Structures", "Algorithms", "LeetCode 1913"],
     match: "100%",
-    episode: "S01 E08"
+    episode: "S01 E08",
+    live: "https://leetcode.com/u/kanha_12/",
+    github: "https://github.com/parth506"
   }
 ];
 
@@ -278,10 +289,10 @@ const Projects = () => {
             <div 
               key={i}
               ref={el => cardsRef.current[i] = el}
-              className="hidden md:block absolute w-[80vw] md:w-[33vw] max-w-[380px] aspect-[16/10] will-change-transform"
+              className="hidden md:block absolute w-[80vw] md:w-[34vw] max-w-[400px] aspect-[16/11] will-change-transform"
               style={{ zIndex: 10 + i }}
             >
-              <div className="w-full h-full rounded-[24px] overflow-hidden border border-white/15 bg-[#141414]/95 backdrop-blur-2xl shadow-[0_25px_50px_rgba(0,0,0,0.9)] transition-all duration-500 group hover:scale-[1.04] hover:border-red-600 hover:shadow-[0_35px_80px_rgba(229,9,20,0.35)] hover:-translate-y-2 cursor-pointer relative z-10 p-7 flex flex-col justify-between">
+              <div className="w-full h-full rounded-[24px] overflow-hidden border border-white/15 bg-[#141414]/95 backdrop-blur-2xl shadow-[0_25px_50px_rgba(0,0,0,0.9)] transition-all duration-500 group hover:scale-[1.04] hover:border-red-600 hover:shadow-[0_35px_80px_rgba(229,9,20,0.35)] hover:-translate-y-2 relative z-10 p-5 md:p-6 flex flex-col justify-between">
                 
                 {/* Top Card Header */}
                 <div className="flex items-center justify-between">
@@ -295,11 +306,11 @@ const Projects = () => {
                 </div>
 
                 {/* Middle Title & Description */}
-                <div className="space-y-2 my-auto">
-                  <div className="text-[11px] font-mono uppercase tracking-widest text-white/40">
+                <div className="space-y-1.5 my-auto">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-white/40">
                     {project.category}
                   </div>
-                  <h3 className="text-2xl font-black text-white tracking-tight group-hover:text-red-500 transition-colors duration-300">
+                  <h3 className="text-xl md:text-2xl font-black text-white tracking-tight group-hover:text-red-500 transition-colors duration-300">
                     {project.title}
                   </h3>
                   <p className="text-xs text-white/70 font-light leading-relaxed line-clamp-2">
@@ -307,17 +318,49 @@ const Projects = () => {
                   </p>
                 </div>
 
-                {/* Bottom Tech Tags */}
-                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/10">
-                  {project.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="text-[10px] font-mono text-white/70 bg-white/5 px-2 py-0.5 rounded group-hover:border-red-600/30 transition-colors">
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  {project.tags.slice(0, 4).map((tag, tIdx) => (
+                    <span key={tIdx} className="text-[9px] font-mono text-white/70 bg-white/5 px-2 py-0.5 rounded group-hover:border-red-600/30 transition-colors">
                       {tag}
                     </span>
                   ))}
                 </div>
 
+                {/* Interactive Action Buttons: Live & GitHub */}
+                <div className="flex items-center gap-2 pt-3 border-t border-white/10 mt-1 relative z-30 pointer-events-auto">
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 bg-red-600 hover:bg-red-700 text-white rounded text-[10px] font-mono uppercase font-bold tracking-wider transition-all duration-300 shadow-[0_0_15px_rgba(229,9,20,0.4)] hover:scale-[1.02] active:scale-95 cursor-pointer"
+                    >
+                      <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                      Live Demo
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded text-[10px] font-mono uppercase font-bold tracking-wider transition-all duration-300 backdrop-blur-md hover:scale-[1.02] active:scale-95 cursor-pointer"
+                    >
+                      <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                      </svg>
+                      GitHub
+                    </a>
+                  )}
+                </div>
+
                 {/* Red Glowing Corner Accent */}
-                <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-red-600 group-hover:shadow-[0_0_15px_#E50914] transition-all" />
+                <div className="absolute bottom-3 right-3 w-1.5 h-1.5 rounded-full bg-red-600 group-hover:shadow-[0_0_12px_#E50914] transition-all pointer-events-none" />
               </div>
             </div>
           ))}
@@ -349,25 +392,40 @@ const Projects = () => {
           <div 
             key={`mob-${i}`}
             ref={el => mobileCardsRef.current[i] = el}
-            className="shrink-0 w-[78vw] aspect-[16/11] snap-center will-change-transform relative z-10"
+            className="shrink-0 w-[78vw] aspect-[16/12] snap-center will-change-transform relative z-10"
           >
-            <div className="w-full h-full rounded-[24px] overflow-hidden border border-white/15 bg-[#141414] p-6 flex flex-col justify-between shadow-[0_20px_40px_rgba(0,0,0,0.9)]">
+            <div className="w-full h-full rounded-[24px] overflow-hidden border border-white/15 bg-[#141414] p-5 flex flex-col justify-between shadow-[0_20px_40px_rgba(0,0,0,0.9)] pointer-events-auto">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-mono font-bold tracking-widest text-red-500 bg-red-600/10 px-2 py-0.5 rounded">
                   {project.episode}
                 </span>
                 <span className="text-xs font-mono text-red-400 font-bold">{project.match} Match</span>
               </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-black text-white">{project.title}</h3>
+              <div className="space-y-1.5">
+                <h3 className="text-lg font-black text-white">{project.title}</h3>
                 <p className="text-xs text-white/70 font-light line-clamp-2">{project.description}</p>
               </div>
-              <div className="flex flex-wrap gap-1 pt-2 border-t border-white/10">
-                {project.tags.slice(0, 3).map((tag, tIdx) => (
-                  <span key={tIdx} className="text-[10px] font-mono text-white/60 bg-white/5 px-2 py-0.5 rounded">
-                    {tag}
-                  </span>
-                ))}
+              <div className="flex items-center gap-2 pt-2 border-t border-white/10">
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-1 py-1.5 bg-red-600 text-white rounded text-[10px] font-mono uppercase font-bold"
+                  >
+                    Live
+                  </a>
+                )}
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-1 py-1.5 bg-white/10 border border-white/20 text-white rounded text-[10px] font-mono uppercase font-bold"
+                  >
+                    GitHub
+                  </a>
+                )}
               </div>
             </div>
           </div>
