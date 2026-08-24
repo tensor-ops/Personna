@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import pictureImg from '../assets/Portfolio/picture.png';
+import { openAndDownloadPdf } from '../utils/pdfHelper';
 
 const Hero = () => {
   const sectionRef = useRef(null);
@@ -232,7 +233,8 @@ const Hero = () => {
                 href="/Parth_Agrawal_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 bg-red-600/90 text-white font-bold text-xs uppercase tracking-widest rounded hover:bg-red-700 transition-all duration-300 shadow-[0_10px_30px_rgba(229,9,20,0.5)] flex items-center gap-2 hover:scale-105 active:scale-95 border border-red-500/40"
+                onClick={(e) => openAndDownloadPdf(e, '/Parth_Agrawal_CV.pdf', 'Parth_Agrawal_CV.pdf')}
+                className="px-6 py-3.5 bg-red-600/90 text-white font-bold text-xs uppercase tracking-widest rounded hover:bg-red-700 transition-all duration-300 shadow-[0_10px_30px_rgba(229,9,20,0.5)] flex items-center gap-2 hover:scale-105 active:scale-95 border border-red-500/40 cursor-pointer"
               >
                 <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -333,6 +335,7 @@ const Hero = () => {
             href="/Parth_Agrawal_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => openAndDownloadPdf(e, '/Parth_Agrawal_Resume.pdf', 'Parth_Agrawal_Resume.pdf')}
             className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 backdrop-blur-md hover:scale-105 active:scale-95 cursor-pointer"
           >
             <svg className="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { openAndDownloadPdf } from '../utils/pdfHelper';
 
 const Footer = () => {
   return (
@@ -74,7 +75,8 @@ const Footer = () => {
               href="/Parth_Agrawal_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-red-500 hover:text-red-400 font-bold transition-colors uppercase tracking-wider flex items-center gap-1"
+              onClick={(e) => openAndDownloadPdf(e, '/Parth_Agrawal_CV.pdf', 'Parth_Agrawal_CV.pdf')}
+              className="text-red-500 hover:text-red-400 font-bold transition-colors uppercase tracking-wider flex items-center gap-1 cursor-pointer"
             >
               Download CV (PDF) //
             </a>
@@ -82,7 +84,8 @@ const Footer = () => {
               href="/Parth_Agrawal_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-red-500 hover:text-red-400 font-bold transition-colors uppercase tracking-wider flex items-center gap-1"
+              onClick={(e) => openAndDownloadPdf(e, '/Parth_Agrawal_Resume.pdf', 'Parth_Agrawal_Resume.pdf')}
+              className="text-red-500 hover:text-red-400 font-bold transition-colors uppercase tracking-wider flex items-center gap-1 cursor-pointer"
             >
               Download Resume (PDF) //
             </a>
