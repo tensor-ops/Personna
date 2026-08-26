@@ -6,10 +6,11 @@
  */
 export const openAndDownloadPdf = (url, filename) => {
   const safeFilename = filename || 'Parth_Agrawal_CV.pdf';
+  const cleanUrl = url.startsWith('/') ? `${import.meta.env.BASE_URL}${url.slice(1)}` : url;
 
   // Trigger physical download in parallel without blocking native new-tab navigation
   setTimeout(() => {
-    fetch(url)
+    fetch(cleanUrl)
       .then((res) => {
         if (!res.ok) throw new Error('Download failed');
         return res.blob();

@@ -404,10 +404,10 @@ const Hero = () => {
         <div className="flex items-center gap-3">
           <ThemeSwitcher />
           <a
-            href="/Parth_Agrawal_Resume.pdf"
+            href="./Parth_Agrawal_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => openAndDownloadPdf('/Parth_Agrawal_Resume.pdf', 'Parth_Agrawal_Resume.pdf')}
+            onClick={() => openAndDownloadPdf('./Parth_Agrawal_Resume.pdf', 'Parth_Agrawal_Resume.pdf')}
             className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 backdrop-blur-md hover:scale-105 active:scale-95 cursor-pointer"
           >
             <svg className="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
