@@ -188,30 +188,34 @@ const Hero = () => {
               </span>
             </div>
 
-            {/* Giant Title */}
-            <h1 className="hero-anim-item text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.92] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
-              PARTH <br />
-              <span 
-                className="text-transparent bg-clip-text drop-shadow-[0_0_35px_var(--accent-glow)]"
-                style={{ backgroundImage: 'var(--accent-gradient)' }}
-              >
-                AGRAWAL
-              </span>
-            </h1>
-
-            {/* Role Header */}
-            <div className="hero-anim-item flex items-center gap-2 text-xs md:text-sm font-mono tracking-wider font-semibold text-white/90">
-              <span style={{ color: 'var(--accent-color)' }}>&bull;</span>
-              <span>FULL-STACK ARCHITECT</span>
-              <span className="text-white/40">|</span>
-              <span>AI & ML RESEARCHER</span>
-              <span className="text-white/40">|</span>
-              <span>DISTRIBUTED SYSTEMS</span>
+            {/* Identity & Meaningful Engineering Headline */}
+            <div className="hero-anim-item flex flex-col space-y-2">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-none drop-shadow-md">
+                Parth Agrawal
+              </h1>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight leading-snug">
+                <span 
+                  className="text-transparent bg-clip-text drop-shadow-[0_0_30px_var(--accent-glow)]"
+                  style={{ backgroundImage: 'var(--accent-gradient)' }}
+                >
+                  Full-Stack Architect & AI Researcher
+                </span>
+              </h2>
             </div>
 
-            {/* Quick Bio */}
+            {/* Core Focus Areas */}
+            <div className="hero-anim-item flex flex-wrap items-center gap-2 text-xs md:text-sm font-mono tracking-wider font-semibold text-white/90">
+              <span style={{ color: 'var(--accent-color)' }}>&bull;</span>
+              <span>DISTRIBUTED SYSTEMS</span>
+              <span className="text-white/40">|</span>
+              <span>NETWORK ML & ENCRYPTED DNS</span>
+              <span className="text-white/40">|</span>
+              <span>HIGH-PERFORMANCE WEB</span>
+            </div>
+
+            {/* Meaningful Engineering Bio */}
             <p className="hero-anim-item text-sm md:text-base text-white/80 font-light leading-relaxed max-w-xl drop-shadow">
-              Architecting high-concurrency distributed backends, intelligent multi-agent systems, and production React applications with deep focus on encrypted traffic observability and algorithmic efficiency.
+              Undergraduate engineer at IIIT Allahabad building resilient, high-concurrency cloud architectures, intelligent multi-agent AI systems, and machine learning pipelines for network traffic telemetry.
             </p>
 
             {/* Live Metrics Matrix Grid (Fills Space with High Impact Stats) */}
