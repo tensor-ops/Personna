@@ -157,14 +157,15 @@ const Hero = () => {
         </div>
 
         {/* Main Center Cinematic Stage Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 my-auto">
 
-          {/* Left Side: Developer Story & Description */}
-          <div className="lg:col-span-5 flex flex-col items-start space-y-5 text-left">
+          {/* Left Side: Developer Story, Metrics Matrix & Description */}
+          <div className="lg:col-span-7 flex flex-col items-start space-y-5 text-left">
 
-            <div className="hero-anim-item flex items-center gap-3">
+            {/* Cinematic Netflix Pill Ticker */}
+            <div className="hero-anim-item flex flex-wrap items-center gap-2.5">
               <span 
-                className="px-2.5 py-0.5 text-white font-black text-xs rounded tracking-widest animate-pulse"
+                className="px-3 py-1 text-white font-black text-xs rounded tracking-widest animate-pulse"
                 style={{
                   backgroundColor: 'var(--accent-color)',
                   boxShadow: '0 0 20px var(--accent-glow)'
@@ -172,10 +173,23 @@ const Hero = () => {
               >
                 TOP 1%
               </span>
-              <span className="text-white/80 text-xs font-mono tracking-widest uppercase">Software Engineer & Problem Solver</span>
+              <span 
+                className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold tracking-wider uppercase border"
+                style={{
+                  backgroundColor: 'var(--accent-glow-subtle)',
+                  borderColor: 'var(--accent-border)',
+                  color: 'var(--accent-color)'
+                }}
+              >
+                ★ 99% MATCH
+              </span>
+              <span className="text-white/60 text-xs font-mono tracking-widest uppercase">
+                B.Tech (IT & Entrepreneurship) // IIIT Allahabad
+              </span>
             </div>
 
-            <h1 className="hero-anim-item text-5xl md:text-7xl font-black tracking-tighter text-white leading-[0.95] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
+            {/* Giant Title */}
+            <h1 className="hero-anim-item text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.92] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
               PARTH <br />
               <span 
                 className="text-transparent bg-clip-text drop-shadow-[0_0_35px_var(--accent-glow)]"
@@ -185,29 +199,67 @@ const Hero = () => {
               </span>
             </h1>
 
-            <div className="hero-anim-item flex items-center gap-3 text-xs font-mono font-bold" style={{ color: 'var(--accent-color)' }}>
-              <span 
-                className="px-2 py-0.5 rounded border"
-                style={{
-                  backgroundColor: 'var(--accent-glow-subtle)',
-                  borderColor: 'var(--accent-border)',
-                  color: 'var(--accent-color)'
-                }}
-              >
-                IIIT Allahabad
-              </span>
-              <span className="text-white/40">•</span>
-              <span>CGPA: 9.24</span>
-              <span className="text-white/40">•</span>
-              <span className="text-white/70">LeetCode 1913</span>
+            {/* Role Header */}
+            <div className="hero-anim-item flex items-center gap-2 text-xs md:text-sm font-mono tracking-wider font-semibold text-white/90">
+              <span style={{ color: 'var(--accent-color)' }}>&bull;</span>
+              <span>FULL-STACK ARCHITECT</span>
+              <span className="text-white/40">|</span>
+              <span>AI & ML RESEARCHER</span>
+              <span className="text-white/40">|</span>
+              <span>DISTRIBUTED SYSTEMS</span>
             </div>
 
-            <p className="hero-anim-item text-sm md:text-base text-white/80 font-light leading-relaxed max-w-md drop-shadow">
-              B.Tech student at IIIT Allahabad specializing in Network ML, Encrypted Traffic Intelligence, scalable full-stack architectures, and AI systems.
+            {/* Quick Bio */}
+            <p className="hero-anim-item text-sm md:text-base text-white/80 font-light leading-relaxed max-w-xl drop-shadow">
+              Architecting high-concurrency distributed backends, intelligent multi-agent systems, and production React applications with deep focus on encrypted traffic observability and algorithmic efficiency.
             </p>
 
+            {/* Live Metrics Matrix Grid (Fills Space with High Impact Stats) */}
+            <div className="hero-anim-item grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-xl pt-1">
+              <div 
+                className="p-3 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col"
+                style={{ borderColor: 'var(--accent-border)' }}
+              >
+                <span className="text-xl md:text-2xl font-black tracking-tight" style={{ color: 'var(--accent-color)' }}>9.24</span>
+                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider">CGPA // IIITA</span>
+              </div>
+              <div 
+                className="p-3 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col"
+                style={{ borderColor: 'var(--accent-border)' }}
+              >
+                <span className="text-xl md:text-2xl font-black tracking-tight text-white">1913</span>
+                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider">LeetCode Knight</span>
+              </div>
+              <div 
+                className="p-3 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col"
+                style={{ borderColor: 'var(--accent-border)' }}
+              >
+                <span className="text-xl md:text-2xl font-black tracking-tight text-white">783+</span>
+                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider">Solved Algos</span>
+              </div>
+              <div 
+                className="p-3 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col"
+                style={{ borderColor: 'var(--accent-border)' }}
+              >
+                <span className="text-xl md:text-2xl font-black tracking-tight" style={{ color: 'var(--accent-color)' }}>Top 4.18%</span>
+                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider">Global Contest</span>
+              </div>
+            </div>
+
+            {/* Core Domain Badges */}
+            <div className="hero-anim-item flex flex-wrap gap-2 pt-1">
+              {['React 19', 'TypeScript', 'Node.js', 'Python / ML', 'DynamoDB', 'Docker', 'C++'].map((badge, bIdx) => (
+                <span 
+                  key={bIdx} 
+                  className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[11px] font-mono text-white/70 hover:border-[var(--accent-border)] hover:text-white transition-colors"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
+
             {/* Action Button Set */}
-            <div className="hero-anim-item flex items-center gap-4 pt-2">
+            <div className="hero-anim-item flex flex-wrap items-center gap-4 pt-2">
               <a
                 href="#projects"
                 className="px-8 py-3.5 bg-white text-black font-bold text-xs uppercase tracking-widest rounded hover:bg-[var(--accent-color)] hover:text-white transition-all duration-300 shadow-[0_10px_35px_rgba(255,255,255,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95"
@@ -231,11 +283,11 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Center: Interactive 3D Holographic Tilt Developer Poster Frame */}
-          <div className="lg:col-span-4 flex justify-center perspective-[1200px]">
+          {/* Right Side: Interactive 3D Holographic Tilt Developer Card & Specs */}
+          <div className="lg:col-span-5 flex flex-col items-center lg:items-end space-y-6 perspective-[1200px]">
             <div
               ref={cardRef}
-              className="relative group transform-gpu transition-transform duration-100 ease-out will-change-transform"
+              className="relative group transform-gpu transition-transform duration-100 ease-out will-change-transform w-full max-w-[340px]"
             >
               {/* Cinematic Neon Back Glow */}
               <div 
@@ -245,7 +297,7 @@ const Hero = () => {
 
               {/* Holographic Developer Card with Glossy Sheen */}
               <div 
-                className="relative w-[280px] md:w-[320px] h-[330px] md:h-[390px] p-6 bg-[#101010]/95 backdrop-blur-2xl rounded-2xl border shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col justify-between"
+                className="relative w-full h-[360px] p-6 bg-[#101010]/95 backdrop-blur-2xl rounded-2xl border shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col justify-between"
                 style={{ borderColor: 'var(--accent-border)' }}
               >
 
@@ -263,7 +315,7 @@ const Hero = () => {
                     <span className="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
                   </div>
                   <span className="text-[10px] font-mono tracking-widest text-white/40 uppercase">
-                    SYS://ONLINE
+                    SYS://ONLINE &bull; PARTH_OS v2.6
                   </span>
                 </div>
 
@@ -292,47 +344,32 @@ const Hero = () => {
                   </div>
 
                   <div className="text-center space-y-0.5">
-                    <div className="text-xs font-mono font-bold tracking-widest uppercase text-white">
+                    <div className="text-sm font-mono font-bold tracking-widest uppercase text-white">
                       PARTH AGRAWAL
                     </div>
-                    <div className="text-[10px] font-mono text-white/50 tracking-wider">
-                      SOFTWARE ENGINEER // ML
+                    <div className="text-[11px] font-mono text-white/50 tracking-wider">
+                      FULL-STACK ARCHITECT // ML
                     </div>
                   </div>
                 </div>
 
                 {/* Bottom Telemetry Lines */}
-                <div className="pt-3 border-t border-white/10 font-mono text-[10px] space-y-1 relative z-10">
-                  <div className="flex justify-between text-white/60">
-                    <span>STATUS</span>
-                    <span className="text-emerald-400 font-bold">READY TO BUILD</span>
+                <div className="pt-3 border-t border-white/10 font-mono text-[10px] space-y-1.5 relative z-10">
+                  <div className="flex justify-between text-white/70">
+                    <span>SPECIALIZATION</span>
+                    <span className="text-emerald-400 font-bold">NETWORK ML & ARCHITECTURE</span>
                   </div>
-                  <div className="flex justify-between text-white/60">
-                    <span>RANK</span>
-                    <span style={{ color: 'var(--accent-color)' }}>LEETCODE 1913</span>
+                  <div className="flex justify-between text-white/70">
+                    <span>GLOBAL CONTEST</span>
+                    <span style={{ color: 'var(--accent-color)' }}>TOP 1500 THE BIG CODE</span>
                   </div>
-                  <div className="flex justify-between text-white/40">
-                    <span>CAMPUS</span>
-                    <span>IIIT ALLAHABAD</span>
+                  <div className="flex justify-between text-white/50">
+                    <span>LOCATION</span>
+                    <span>PRAYAGRAJ (ALLAHABAD), IN</span>
                   </div>
                 </div>
 
               </div>
-            </div>
-          </div>
-
-          {/* Right Side: Technical Specs & Stack */}
-          <div className="hero-anim-item lg:col-span-3 flex flex-col items-start lg:items-end space-y-4 text-left lg:text-right">
-            <div className="p-5 bg-black/80 backdrop-blur-2xl border border-white/15 rounded-xl shadow-2xl max-w-xs">
-              <h3 
-                className="text-xs font-mono uppercase tracking-widest font-bold mb-2"
-                style={{ color: 'var(--accent-color)' }}
-              >
-                Core Stack & Awards
-              </h3>
-              <p className="text-xs text-white/80 leading-relaxed font-light">
-                IIIT Allahabad (CGPA 9.24), Top 1500 The Big Code 2026, LeetCode 1913 Rating (783+ Solved), IMO Gold Medalist.
-              </p>
             </div>
           </div>
 
