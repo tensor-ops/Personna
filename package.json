@@ -9,7 +9,8 @@
     "dev:backend": "npm --prefix backend run dev",
     "build:frontend": "npm --prefix frontend run build",
     "start:backend": "npm --prefix backend start",
-    "install:all": "npm install && npm --prefix frontend install && npm --prefix backend install"
+    "install:all": "npm install && npm --prefix frontend install && npm --prefix backend install",
+    "deploy": "npm run build:frontend && npx gh-pages -d frontend/dist"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
