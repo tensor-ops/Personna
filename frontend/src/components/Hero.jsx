@@ -9,8 +9,6 @@ const Hero = () => {
   const cardRef = useRef(null);
   const glareRef = useRef(null);
   const spotlightRef = useRef(null);
-  const cursorDotRef = useRef(null);
-  const cursorRingRef = useRef(null);
   const contentRef = useRef(null);
 
   const developerRoles = [
@@ -47,19 +45,7 @@ const Hero = () => {
         "-=0.9"
       );
 
-    // --- MOUSE PHYSICS & SPOTLIGHT TRACKING ---
-    gsap.set([cursorDotRef.current, cursorRingRef.current], {
-      scale: 0.5,
-      opacity: 0,
-      transformOrigin: "50% 50%"
-    });
-
-    const xToDot = gsap.quickTo(cursorDotRef.current, "x", { duration: 0.05, ease: "power2.out" });
-    const yToDot = gsap.quickTo(cursorDotRef.current, "y", { duration: 0.05, ease: "power2.out" });
-
-    const xToRing = gsap.quickTo(cursorRingRef.current, "x", { duration: 0.15, ease: "power3.out" });
-    const yToRing = gsap.quickTo(cursorRingRef.current, "y", { duration: 0.15, ease: "power3.out" });
-
+    // --- 3D PERSPECTIVE PHYSICS & SPOTLIGHT TRACKING ---
     const xTilt = gsap.quickTo(card, "rotationY", { duration: 0.4, ease: "power3.out" });
     const yTilt = gsap.quickTo(card, "rotationX", { duration: 0.4, ease: "power3.out" });
     const glareX = gsap.quickTo(glareRef.current, "x", { duration: 0.3, ease: "power2.out" });
@@ -70,19 +56,10 @@ const Hero = () => {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      const dotSize = 12;
-      const ringSize = 48;
-
-      // Update Spotlight position instantly via inline style
+      // Update Spotlight position
       if (spotlightRef.current) {
         spotlightRef.current.style.transform = `translate3d(${x - 300}px, ${y - 300}px, 0)`;
       }
-
-      // Update Custom Cursor coordinates
-      xToDot(x - dotSize / 2);
-      yToDot(y - dotSize / 2);
-      xToRing(x - ringSize / 2);
-      yToRing(y - ringSize / 2);
 
       // Card 3D Perspective Calculations
       const cardRect = card.getBoundingClientRect();
@@ -101,22 +78,10 @@ const Hero = () => {
     };
 
     const handleMouseEnter = () => {
-      gsap.to([cursorDotRef.current, cursorRingRef.current], {
-        opacity: 1,
-        scale: 1,
-        duration: 0.3,
-        ease: "power2.out"
-      });
       if (spotlightRef.current) gsap.to(spotlightRef.current, { opacity: 1, duration: 0.3 });
     };
 
     const handleMouseLeave = () => {
-      gsap.to([cursorDotRef.current, cursorRingRef.current], {
-        opacity: 0,
-        scale: 0.5,
-        duration: 0.3,
-        ease: "power2.inOut"
-      });
       if (spotlightRef.current) gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3 });
       xTilt(0);
       yTilt(0);
@@ -168,7 +133,7 @@ const Hero = () => {
         ref={spotlightRef}
         className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none z-10 opacity-0 blur-[90px] transition-opacity duration-300"
         style={{
-          background: 'radial-gradient(circle, rgba(229,9,20,0.35) 0%, rgba(229,9,20,0.1) 40%, transparent 70%)'
+          background: 'radial-gradient(circle, var(--accent-glow) 0%, var(--accent-glow-subtle) 40%, transparent 70%)'
         }}
       ></div>
 
@@ -177,9 +142,12 @@ const Hero = () => {
 
         {/* Top Netflix Cinematic Badge */}
         <div className="hero-anim-item flex items-center justify-between w-full">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-red-600/40 text-xs font-mono uppercase tracking-widest text-white shadow-2xl">
-            <span className="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
-            <span className="text-red-500 font-bold tracking-wider">NETFLIX DEVELOPER SERIES</span>
+          <div 
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border text-xs font-mono uppercase tracking-widest text-white shadow-2xl"
+            style={{ borderColor: 'var(--accent-border)' }}
+          >
+            <span className="w-2 h-2 rounded-full animate-ping" style={{ backgroundColor: 'var(--accent-color)' }}></span>
+            <span className="font-bold tracking-wider" style={{ color: 'var(--accent-color)' }}>NETFLIX DEVELOPER SERIES</span>
             <span className="text-white/40">|</span>
             <span className="text-white/80">SEASONS 2024 - 2026</span>
           </div>
@@ -196,19 +164,39 @@ const Hero = () => {
           <div className="lg:col-span-5 flex flex-col items-start space-y-5 text-left">
 
             <div className="hero-anim-item flex items-center gap-3">
-              <span className="px-2.5 py-0.5 bg-red-600 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(229,9,20,0.8)] animate-pulse">TOP 1%</span>
+              <span 
+                className="px-2.5 py-0.5 text-white font-black text-xs rounded tracking-widest animate-pulse"
+                style={{
+                  backgroundColor: 'var(--accent-color)',
+                  boxShadow: '0 0 20px var(--accent-glow)'
+                }}
+              >
+                TOP 1%
+              </span>
               <span className="text-white/80 text-xs font-mono tracking-widest uppercase">Software Engineer & Problem Solver</span>
             </div>
 
             <h1 className="hero-anim-item text-5xl md:text-7xl font-black tracking-tighter text-white leading-[0.95] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
               PARTH <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-600 to-red-700 drop-shadow-[0_0_35px_rgba(220,38,38,0.5)]">
+              <span 
+                className="text-transparent bg-clip-text drop-shadow-[0_0_35px_var(--accent-glow)]"
+                style={{ backgroundImage: 'var(--accent-gradient)' }}
+              >
                 AGRAWAL
               </span>
             </h1>
 
-            <div className="hero-anim-item flex items-center gap-3 text-xs font-mono text-red-400 font-bold">
-              <span className="px-2 py-0.5 bg-red-500/10 border border-red-500/30 rounded text-red-500">IIIT Allahabad</span>
+            <div className="hero-anim-item flex items-center gap-3 text-xs font-mono font-bold" style={{ color: 'var(--accent-color)' }}>
+              <span 
+                className="px-2 py-0.5 rounded border"
+                style={{
+                  backgroundColor: 'var(--accent-glow-subtle)',
+                  borderColor: 'var(--accent-border)',
+                  color: 'var(--accent-color)'
+                }}
+              >
+                IIIT Allahabad
+              </span>
               <span className="text-white/40">•</span>
               <span>CGPA: 9.24</span>
               <span className="text-white/40">•</span>
@@ -223,7 +211,7 @@ const Hero = () => {
             <div className="hero-anim-item flex items-center gap-4 pt-2">
               <a
                 href="#projects"
-                className="px-8 py-3.5 bg-white text-black font-bold text-xs uppercase tracking-widest rounded hover:bg-red-600 hover:text-white transition-all duration-300 shadow-[0_10px_35px_rgba(255,255,255,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95"
+                className="px-8 py-3.5 bg-white text-black font-bold text-xs uppercase tracking-widest rounded hover:bg-[var(--accent-color)] hover:text-white transition-all duration-300 shadow-[0_10px_35px_rgba(255,255,255,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
@@ -280,7 +268,12 @@ const Hero = () => {
           {/* Right Side: Technical Specs & Stack */}
           <div className="hero-anim-item lg:col-span-3 flex flex-col items-start lg:items-end space-y-4 text-left lg:text-right">
             <div className="p-5 bg-black/80 backdrop-blur-2xl border border-white/15 rounded-xl shadow-2xl max-w-xs">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold mb-2">Core Stack & Awards</h3>
+              <h3 
+                className="text-xs font-mono uppercase tracking-widest font-bold mb-2"
+                style={{ color: 'var(--accent-color)' }}
+              >
+                Core Stack & Awards
+              </h3>
               <p className="text-xs text-white/80 leading-relaxed font-light">
                 IIIT Allahabad (CGPA 9.24), Top 1500 The Big Code 2026, LeetCode 1913 Rating (783+ Solved), IMO Gold Medalist.
               </p>
@@ -296,17 +289,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* 4. Ultra Pro Max Custom Precision Cursor Suite */}
-      <div
-        ref={cursorDotRef}
-        className="absolute top-0 left-0 z-50 pointer-events-none w-3 h-3 bg-red-600 rounded-full shadow-[0_0_15px_#E50914]"
-      ></div>
-
-      <div
-        ref={cursorRingRef}
-        className="absolute top-0 left-0 z-50 pointer-events-none w-12 h-12 border border-red-600/60 rounded-full flex items-center justify-center backdrop-blur-[1px]"
-      ></div>
-
       {/* --- NETFLIX-THEMED DEVELOPER NAVBAR --- */}
       <header className="absolute top-0 left-0 z-50 w-full max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between pointer-events-auto">
         <div 
@@ -319,12 +301,12 @@ const Hero = () => {
           PARTH<span className="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
         </div>
         <nav className="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-white/80">
-          <a href="#home" className="hover:text-red-500 transition-colors">Home</a>
-          <a href="#about" className="hover:text-red-500 transition-colors">About</a>
-          <a href="#expertise" className="hover:text-red-500 transition-colors">Expertise</a>
-          <a href="#skills" className="hover:text-red-500 transition-colors">Skills</a>
-          <a href="#projects" className="hover:text-red-500 transition-colors">Projects</a>
-          <a href="#contact" className="hover:text-red-500 transition-colors">Contact</a>
+          <a href="#home" className="hover:text-[var(--accent-color)] transition-colors">Home</a>
+          <a href="#about" className="hover:text-[var(--accent-color)] transition-colors">About</a>
+          <a href="#expertise" className="hover:text-[var(--accent-color)] transition-colors">Expertise</a>
+          <a href="#skills" className="hover:text-[var(--accent-color)] transition-colors">Skills</a>
+          <a href="#projects" className="hover:text-[var(--accent-color)] transition-colors">Projects</a>
+          <a href="#contact" className="hover:text-[var(--accent-color)] transition-colors">Contact</a>
         </nav>
         <div className="flex items-center gap-3">
           <ThemeSwitcher />
@@ -342,7 +324,11 @@ const Hero = () => {
           </a>
           <a
             href="#contact"
-            className="px-5 py-2 rounded bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_20px_rgba(229,9,20,0.6)] hover:scale-105 active:scale-95"
+            className="px-5 py-2 rounded text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 hover:scale-105 active:scale-95"
+            style={{
+              backgroundColor: 'var(--accent-color)',
+              boxShadow: '0 0 20px var(--accent-glow)'
+            }}
           >
             Hire Me
           </a>

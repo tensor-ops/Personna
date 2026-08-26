@@ -72,7 +72,7 @@ Personna/
 ├── frontend/                      # React 19 + Vite Frontend
 │   ├── public/                    # Static assets & downloadable PDFs
 │   ├── src/
-│   │   ├── components/            # UI components (Contact.jsx, Hero.jsx, etc.)
+│   │   ├── components/            # UI components (Hero, About, Skills, Projects, Contact, etc.)
 │   │   ├── context/               # Theme context and state
 │   │   ├── utils/                 # PDF and helper utilities
 │   │   ├── App.jsx                # Main layout
@@ -83,10 +83,11 @@ Personna/
 ├── backend/                       # Node.js + Express Contact Backend
 │   ├── data/
 │   │   └── messages.json          # Persistent JSON store for submitted messages
-│   ├── server.js                  # Express API server (POST /api/contact, GET /api/contact)
+│   ├── server.js                  # Express API server (POST /api/contact, GET /api/contact, GET /api/stats)
 │   ├── .env                       # Backend environment variables (PORT 5001)
 │   ├── .env.example
 │   └── package.json               # Backend dependencies
+├── MASTER_PROMPT.md               # Master prompt & full architectural blueprint
 ├── package.json                   # Root orchestrator (runs frontend & backend together)
 └── README.md                      # Project documentation
 ```

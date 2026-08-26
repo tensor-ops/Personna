@@ -58,23 +58,68 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'ok',
     timestamp: new Date().toISOString(),
-    service: 'Personna Portfolio Contact API'
+    service: 'Personna Portfolio Contact API',
+    uptime: process.uptime()
   });
 });
 
-// GET /api/contact - List all submitted contact messages
-app.get('/api/contact', (req, res) => {
+// GET /api/stats - Portfolio contact submission telemetry
+app.get('/api/stats', (req, res) => {
   const messages = readMessages();
   res.status(200).json({
     success: true,
-    count: messages.length,
+    totalMessages: messages.length,
+    lastReceived: messages.length > 0 ? messages[0].createdAt : null,
+    uptime: process.uptime()
+  });
+});
+
+// GET /api/contact - List all submitted contact messages with optional search and limit
+app.get('/api/contact', (req, res) => {
+  let messages = readMessages();
+  const { search, limit } = req.query;
+
+  if (search && typeof search === 'string') {
+    const q = search.toLowerCase();
+    messages = messages.filter((m) =>
+      (m.firstName && m.firstName.toLowerCase().includes(q)) ||
+      (m.lastName && m.lastName.toLowerCase().includes(q)) ||
+      (m.email && m.email.toLowerCase().includes(q)) ||
+      (m.message && m.message.toLowerCase().includes(q))
+    );
+  }
+
+  const count = messages.length;
+  if (limit && !isNaN(parseInt(limit, 10))) {
+    messages = messages.slice(0, parseInt(limit, 10));
+  }
+
+  res.status(200).json({
+    success: true,
+    count,
     data: messages
+  });
+});
+
+// GET /api/contact/:id - Get a specific contact message by ID
+app.get('/api/contact/:id', (req, res) => {
+  const { id } = req.params;
+  const messages = readMessages();
+  const message = messages.find((m) => m.id === id);
+
+  if (!message) {
+    return res.status(404).json({ success: false, error: 'Message not found.' });
+  }
+
+  return res.status(200).json({
+    success: true,
+    data: message
   });
 });
 
 // POST /api/contact - Save a new contact message
 app.post('/api/contact', (req, res) => {
-  const { firstName, lastName, email, message, permission } = req.body;
+  const { firstName, lastName, email, message, permission } = req.body || {};
 
   // Validation
   if (!firstName || typeof firstName !== 'string' || !firstName.trim()) {
