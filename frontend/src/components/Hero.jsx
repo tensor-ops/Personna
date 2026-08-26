@@ -157,12 +157,12 @@ const Hero = () => {
         </div>
 
         {/* Main Center Cinematic Stage Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-14 my-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12 my-auto">
 
-          {/* Left Column: Headline, Bio & Primary Metrics */}
-          <div className="lg:col-span-7 flex flex-col items-start space-y-6 text-left">
+          {/* Left Side: Developer Story, Metrics Matrix & Description */}
+          <div className="lg:col-span-7 flex flex-col items-start space-y-5 text-left">
 
-            {/* Cinematic Netflix Pill Tickers */}
+            {/* Cinematic Netflix Pill Ticker */}
             <div className="hero-anim-item flex flex-wrap items-center gap-2.5">
               <span 
                 className="px-3 py-1 text-white font-black text-xs rounded tracking-widest animate-pulse"
@@ -189,7 +189,7 @@ const Hero = () => {
             </div>
 
             {/* Giant Title */}
-            <h1 className="hero-anim-item text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.92] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
+            <h1 className="hero-anim-item text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.92] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
               PARTH <br />
               <span 
                 className="text-transparent bg-clip-text drop-shadow-[0_0_35px_var(--accent-glow)]"
@@ -200,7 +200,7 @@ const Hero = () => {
             </h1>
 
             {/* Role Header */}
-            <div className="hero-anim-item flex flex-wrap items-center gap-2 text-xs md:text-sm font-mono tracking-wider font-semibold text-white/90">
+            <div className="hero-anim-item flex items-center gap-2 text-xs md:text-sm font-mono tracking-wider font-semibold text-white/90">
               <span style={{ color: 'var(--accent-color)' }}>&bull;</span>
               <span>FULL-STACK ARCHITECT</span>
               <span className="text-white/40">|</span>
@@ -209,49 +209,49 @@ const Hero = () => {
               <span>DISTRIBUTED SYSTEMS</span>
             </div>
 
-            {/* Bio Description */}
-            <p className="hero-anim-item text-sm md:text-base text-white/80 font-light leading-relaxed max-w-2xl drop-shadow">
-              Architecting high-concurrency distributed backends, intelligent multi-agent systems, and production React applications with deep research in encrypted traffic observability and algorithmic efficiency.
+            {/* Quick Bio */}
+            <p className="hero-anim-item text-sm md:text-base text-white/80 font-light leading-relaxed max-w-xl drop-shadow">
+              Architecting high-concurrency distributed backends, intelligent multi-agent systems, and production React applications with deep focus on encrypted traffic observability and algorithmic efficiency.
             </p>
 
-            {/* Live Metrics Matrix Grid */}
-            <div className="hero-anim-item grid grid-cols-2 sm:grid-cols-4 gap-3.5 w-full max-w-2xl pt-1">
+            {/* Live Metrics Matrix Grid (Fills Space with High Impact Stats) */}
+            <div className="hero-anim-item grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-xl pt-1">
               <div 
-                className="p-3.5 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col justify-between shadow-lg"
+                className="p-3 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col"
                 style={{ borderColor: 'var(--accent-border)' }}
               >
-                <span className="text-2xl md:text-3xl font-black tracking-tight" style={{ color: 'var(--accent-color)' }}>9.24</span>
-                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider mt-1">CGPA // IIITA</span>
+                <span className="text-xl md:text-2xl font-black tracking-tight" style={{ color: 'var(--accent-color)' }}>9.24</span>
+                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider">CGPA // IIITA</span>
               </div>
               <div 
-                className="p-3.5 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col justify-between shadow-lg"
+                className="p-3 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col"
                 style={{ borderColor: 'var(--accent-border)' }}
               >
-                <span className="text-2xl md:text-3xl font-black tracking-tight text-white">1913</span>
-                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider mt-1">LeetCode Knight</span>
+                <span className="text-xl md:text-2xl font-black tracking-tight text-white">1913</span>
+                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider">LeetCode Knight</span>
               </div>
               <div 
-                className="p-3.5 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col justify-between shadow-lg"
+                className="p-3 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col"
                 style={{ borderColor: 'var(--accent-border)' }}
               >
-                <span className="text-2xl md:text-3xl font-black tracking-tight text-white">783+</span>
-                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider mt-1">Solved Algos</span>
+                <span className="text-xl md:text-2xl font-black tracking-tight text-white">783+</span>
+                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider">Solved Algos</span>
               </div>
               <div 
-                className="p-3.5 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col justify-between shadow-lg"
+                className="p-3 rounded-xl bg-black/60 backdrop-blur-xl border flex flex-col"
                 style={{ borderColor: 'var(--accent-border)' }}
               >
-                <span className="text-2xl md:text-3xl font-black tracking-tight" style={{ color: 'var(--accent-color)' }}>Top 4.18%</span>
-                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider mt-1">Global Contest</span>
+                <span className="text-xl md:text-2xl font-black tracking-tight" style={{ color: 'var(--accent-color)' }}>Top 4.18%</span>
+                <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider">Global Contest</span>
               </div>
             </div>
 
             {/* Core Domain Badges */}
             <div className="hero-anim-item flex flex-wrap gap-2 pt-1">
-              {['React 19', 'TypeScript', 'Node.js', 'Python / ML', 'DynamoDB', 'Docker', 'C++', 'System Design'].map((badge, bIdx) => (
+              {['React 19', 'TypeScript', 'Node.js', 'Python / ML', 'DynamoDB', 'Docker', 'C++'].map((badge, bIdx) => (
                 <span 
                   key={bIdx} 
-                  className="px-3 py-1 rounded bg-white/5 border border-white/10 text-xs font-mono text-white/70 hover:border-[var(--accent-border)] hover:text-white transition-colors"
+                  className="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[11px] font-mono text-white/70 hover:border-[var(--accent-border)] hover:text-white transition-colors"
                 >
                   {badge}
                 </span>
@@ -283,71 +283,94 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Column: Interactive System Telemetry & Engineering Matrix */}
-          <div className="lg:col-span-5 flex flex-col space-y-4 w-full">
-            
-            {/* Terminal Console Card */}
-            <div 
-              className="w-full p-6 bg-[#101010]/95 backdrop-blur-2xl rounded-2xl border shadow-[0_30px_60px_rgba(0,0,0,0.9)] space-y-5"
-              style={{ borderColor: 'var(--accent-border)' }}
+          {/* Right Side: Interactive 3D Holographic Tilt Developer Card & Specs */}
+          <div className="lg:col-span-5 flex flex-col items-center lg:items-end space-y-6 perspective-[1200px]">
+            <div
+              ref={cardRef}
+              className="relative group transform-gpu transition-transform duration-100 ease-out will-change-transform w-full max-w-[340px]"
             >
-              {/* Header */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-500"></span>
-                  <span className="text-xs font-mono text-white/50 uppercase ml-2 tracking-wider">ENGINEERING MATRIX</span>
-                </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded border text-emerald-400 border-emerald-500/30 bg-emerald-500/10">
-                  SYS://ACTIVE
-                </span>
-              </div>
-
-              {/* Matrix Specifications */}
-              <div className="space-y-3 font-mono text-xs">
-                <div className="flex justify-between items-start border-b border-white/5 pb-2">
-                  <span className="text-white/50">EDUCATION</span>
-                  <span className="text-white font-semibold text-right">B.Tech IT, IIIT Allahabad</span>
-                </div>
-                <div className="flex justify-between items-start border-b border-white/5 pb-2">
-                  <span className="text-white/50">ACADEMIC HONORS</span>
-                  <span className="text-right" style={{ color: 'var(--accent-color)' }}>CGPA 9.24 / 10 &bull; Top 1%</span>
-                </div>
-                <div className="flex justify-between items-start border-b border-white/5 pb-2">
-                  <span className="text-white/50">ALGORITHMIC RANK</span>
-                  <span className="text-white font-semibold text-right">Knight 1913 (Top 4.18%)</span>
-                </div>
-                <div className="flex justify-between items-start border-b border-white/5 pb-2">
-                  <span className="text-white/50">GLOBAL HACKATHONS</span>
-                  <span className="text-white font-semibold text-right">Top 1500 The Big Code 2026</span>
-                </div>
-                <div className="flex justify-between items-start border-b border-white/5 pb-2">
-                  <span className="text-white/50">KEY RESEARCH</span>
-                  <span className="text-white font-semibold text-right">Encrypted DNS (DoH/DoQ)</span>
-                </div>
-                <div className="flex justify-between items-start">
-                  <span className="text-white/50">LOCATION</span>
-                  <span className="text-white/80 text-right">Prayagraj (Allahabad), IN</span>
-                </div>
-              </div>
-
-              {/* Interactive Status Footer */}
+              {/* Cinematic Neon Back Glow */}
               <div 
-                className="p-3 rounded-xl border flex items-center justify-between text-xs font-mono"
-                style={{
-                  backgroundColor: 'var(--accent-glow-subtle)',
-                  borderColor: 'var(--accent-border)'
-                }}
+                className="absolute -inset-3 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"
+                style={{ background: 'radial-gradient(circle, var(--accent-glow) 0%, var(--accent-glow-subtle) 60%, transparent 80%)' }}
+              ></div>
+
+              {/* Holographic Developer Card with Glossy Sheen */}
+              <div 
+                className="relative w-full h-[360px] p-6 bg-[#101010]/95 backdrop-blur-2xl rounded-2xl border shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col justify-between"
+                style={{ borderColor: 'var(--accent-border)' }}
               >
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full animate-ping" style={{ backgroundColor: 'var(--accent-color)' }}></span>
-                  <span className="font-bold" style={{ color: 'var(--accent-color)' }}>STREAM STATUS</span>
+
+                {/* Dynamic Specular Glare Layer */}
+                <div
+                  ref={glareRef}
+                  className="absolute inset-[-50%] w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none transform-gpu z-40"
+                ></div>
+
+                {/* Top Card Terminal Header */}
+                <div className="flex items-center justify-between w-full relative z-10">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+                  </div>
+                  <span className="text-[10px] font-mono tracking-widest text-white/40 uppercase">
+                    SYS://ONLINE &bull; PARTH_OS v2.6
+                  </span>
                 </div>
-                <span className="text-white font-mono uppercase tracking-wider text-[11px]">OPEN TO OPPORTUNITIES</span>
+
+                {/* Center Monogram Emblem */}
+                <div className="flex flex-col items-center justify-center my-auto space-y-3 relative z-10">
+                  <div 
+                    className="w-24 h-24 rounded-2xl flex items-center justify-center border shadow-2xl relative group-hover:scale-105 transition-transform duration-500"
+                    style={{
+                      borderColor: 'var(--accent-border)',
+                      background: 'radial-gradient(circle, var(--accent-glow-subtle) 0%, rgba(20,20,20,0.9) 80%)'
+                    }}
+                  >
+                    <span 
+                      className="text-4xl font-black tracking-tighter"
+                      style={{
+                        fontFamily: "'Bebas Neue', 'Impact', sans-serif",
+                        color: 'var(--accent-color)',
+                        filter: 'drop-shadow(0 0 15px var(--accent-glow))'
+                      }}
+                    >
+                      PA
+                    </span>
+                    {/* Corner Accent Ticks */}
+                    <div className="absolute top-1.5 left-1.5 w-1.5 h-1.5 border-t-2 border-l-2" style={{ borderColor: 'var(--accent-color)' }}></div>
+                    <div className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 border-b-2 border-r-2" style={{ borderColor: 'var(--accent-color)' }}></div>
+                  </div>
+
+                  <div className="text-center space-y-0.5">
+                    <div className="text-sm font-mono font-bold tracking-widest uppercase text-white">
+                      PARTH AGRAWAL
+                    </div>
+                    <div className="text-[11px] font-mono text-white/50 tracking-wider">
+                      FULL-STACK ARCHITECT // ML
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Telemetry Lines */}
+                <div className="pt-3 border-t border-white/10 font-mono text-[10px] space-y-1.5 relative z-10">
+                  <div className="flex justify-between text-white/70">
+                    <span>SPECIALIZATION</span>
+                    <span className="text-emerald-400 font-bold">NETWORK ML & ARCHITECTURE</span>
+                  </div>
+                  <div className="flex justify-between text-white/70">
+                    <span>GLOBAL CONTEST</span>
+                    <span style={{ color: 'var(--accent-color)' }}>TOP 1500 THE BIG CODE</span>
+                  </div>
+                  <div className="flex justify-between text-white/50">
+                    <span>LOCATION</span>
+                    <span>PRAYAGRAJ (ALLAHABAD), IN</span>
+                  </div>
+                </div>
+
               </div>
             </div>
-
           </div>
 
         </div>
