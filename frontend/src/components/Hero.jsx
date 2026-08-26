@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import pictureImg from '../assets/Portfolio/picture.png';
 import { openAndDownloadPdf } from '../utils/pdfHelper';
 import ThemeSwitcher from './ThemeSwitcher';
 
@@ -244,9 +243,9 @@ const Hero = () => {
                 style={{ background: 'radial-gradient(circle, var(--accent-glow) 0%, var(--accent-glow-subtle) 60%, transparent 80%)' }}
               ></div>
 
-              {/* Poster Card with Glossy Sheen */}
+              {/* Holographic Developer Card with Glossy Sheen */}
               <div 
-                className="relative w-[280px] md:w-[320px] p-3.5 bg-[#141414]/90 backdrop-blur-2xl rounded-2xl border shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden"
+                className="relative w-[280px] md:w-[320px] h-[330px] md:h-[390px] p-6 bg-[#101010]/95 backdrop-blur-2xl rounded-2xl border shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col justify-between"
                 style={{ borderColor: 'var(--accent-border)' }}
               >
 
@@ -256,11 +255,68 @@ const Hero = () => {
                   className="absolute inset-[-50%] w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none transform-gpu z-40"
                 ></div>
 
-                <img
-                  src={pictureImg}
-                  alt="Developer Portrait"
-                  className="w-full h-[330px] md:h-[390px] object-cover rounded-xl filter contrast-125 brightness-105 group-hover:scale-[1.02] transition-transform duration-500"
-                />
+                {/* Top Card Terminal Header */}
+                <div className="flex items-center justify-between w-full relative z-10">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+                  </div>
+                  <span className="text-[10px] font-mono tracking-widest text-white/40 uppercase">
+                    SYS://ONLINE
+                  </span>
+                </div>
+
+                {/* Center Monogram Emblem */}
+                <div className="flex flex-col items-center justify-center my-auto space-y-3 relative z-10">
+                  <div 
+                    className="w-24 h-24 rounded-2xl flex items-center justify-center border shadow-2xl relative group-hover:scale-105 transition-transform duration-500"
+                    style={{
+                      borderColor: 'var(--accent-border)',
+                      background: 'radial-gradient(circle, var(--accent-glow-subtle) 0%, rgba(20,20,20,0.9) 80%)'
+                    }}
+                  >
+                    <span 
+                      className="text-4xl font-black tracking-tighter"
+                      style={{
+                        fontFamily: "'Bebas Neue', 'Impact', sans-serif",
+                        color: 'var(--accent-color)',
+                        filter: 'drop-shadow(0 0 15px var(--accent-glow))'
+                      }}
+                    >
+                      PA
+                    </span>
+                    {/* Corner Accent Ticks */}
+                    <div className="absolute top-1.5 left-1.5 w-1.5 h-1.5 border-t-2 border-l-2" style={{ borderColor: 'var(--accent-color)' }}></div>
+                    <div className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 border-b-2 border-r-2" style={{ borderColor: 'var(--accent-color)' }}></div>
+                  </div>
+
+                  <div className="text-center space-y-0.5">
+                    <div className="text-xs font-mono font-bold tracking-widest uppercase text-white">
+                      PARTH AGRAWAL
+                    </div>
+                    <div className="text-[10px] font-mono text-white/50 tracking-wider">
+                      SOFTWARE ENGINEER // ML
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Telemetry Lines */}
+                <div className="pt-3 border-t border-white/10 font-mono text-[10px] space-y-1 relative z-10">
+                  <div className="flex justify-between text-white/60">
+                    <span>STATUS</span>
+                    <span className="text-emerald-400 font-bold">READY TO BUILD</span>
+                  </div>
+                  <div className="flex justify-between text-white/60">
+                    <span>RANK</span>
+                    <span style={{ color: 'var(--accent-color)' }}>LEETCODE 1913</span>
+                  </div>
+                  <div className="flex justify-between text-white/40">
+                    <span>CAMPUS</span>
+                    <span>IIIT ALLAHABAD</span>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
