@@ -75,7 +75,36 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', currentTheme);
     localStorage.setItem('portfolio_theme', currentTheme);
-  }, [currentTheme]);
+    document.title = '🎬 Parth Agrawal | Developer Portfolio';
+
+    // Dynamic Theme Favicon Generator (Overrides cached tab icons)
+    const accentColor = activeTheme.color || '#E50914';
+    const accentLight = activeTheme.light || '#FF334B';
+    const accentDark = activeTheme.dark || '#8B0000';
+
+    const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+      <defs>
+        <linearGradient id="themeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="${accentLight}"/>
+          <stop offset="50%" stop-color="${accentColor}"/>
+          <stop offset="100%" stop-color="${accentDark}"/>
+        </linearGradient>
+      </defs>
+      <rect x="2" y="2" width="60" height="60" rx="16" fill="#0b0b0b" stroke="${accentColor}" stroke-width="3"/>
+      <path d="M22 14 H35 C42 14 46 18 46 25 C46 32 42 36 35 36 H28 V50 H22 Z M28 20 V30 H34 C38 30 40 28 40 25 C40 22 38 20 34 20 Z" fill="url(#themeGrad)"/>
+      <circle cx="44" cy="46" r="3.5" fill="${accentColor}"/>
+    </svg>`;
+
+    const encodedSvg = `data:image/svg+xml;utf8,${encodeURIComponent(svgIcon)}`;
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+    }
+    link.type = 'image/svg+xml';
+    link.href = encodedSvg;
+  }, [currentTheme, activeTheme]);
 
   const changeTheme = (themeId) => {
     if (THEMES.some((t) => t.id === themeId)) {
