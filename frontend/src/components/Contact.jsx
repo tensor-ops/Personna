@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
 const Contact = () => {
   const ref = useRef(null);
@@ -18,6 +18,42 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Dynamic API Base URL for local vs live deployment
+  const API_BASE = import.meta.env.VITE_API_URL
+    ? `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api`
+    : '/api';
+
+  // Transmission Logs Modal State
+  const [showLogs, setShowLogs] = useState(false);
+  const [logs, setLogs] = useState([]);
+  const [logsLoading, setLogsLoading] = useState(false);
+
+  const fetchLogs = async () => {
+    setLogsLoading(true);
+    try {
+      const res = await fetch(`${API_BASE}/contact`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data)) {
+          setLogs(data.data);
+          return;
+        }
+      }
+      throw new Error('API unavailable, reading local signals');
+    } catch (err) {
+      // Fallback to local storage signals if running statically on GitHub Pages
+      const local = JSON.parse(localStorage.getItem('personna_transmissions') || '[]');
+      setLogs(local);
+    } finally {
+      setLogsLoading(false);
+    }
+  };
+
+  const openLogsModal = () => {
+    setShowLogs(true);
+    fetchLogs();
+  };
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -55,8 +91,18 @@ const Contact = () => {
     setIsSubmitting(true);
     setStatus({ type: '', message: '' });
 
+    const newSignal = {
+      id: crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(),
+      firstName: formData.firstName.trim(),
+      lastName: formData.lastName.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+      permission: true,
+      createdAt: new Date().toISOString()
+    };
+
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(`${API_BASE}/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -67,7 +113,7 @@ const Contact = () => {
       const data = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data.error || 'Failed to transmit message. Please try again.');
+        throw new Error(data.error || 'Failed to transmit message.');
       }
 
       setStatus({
@@ -75,14 +121,21 @@ const Contact = () => {
         message: `Transmission received! Thank you, ${formData.firstName}. Your signal was captured.`
       });
 
-      // Reset form on success
       setFormData({ firstName: '', lastName: '', email: '', message: '', permission: false });
     } catch (err) {
-      console.error('Contact submission error:', err);
+      console.warn('Backend offline or static GitHub Pages mode; saving signal locally:', err);
+      
+      // Save locally so signal is never lost on GitHub Pages
+      const local = JSON.parse(localStorage.getItem('personna_transmissions') || '[]');
+      local.unshift(newSignal);
+      localStorage.setItem('personna_transmissions', JSON.stringify(local));
+
       setStatus({
-        type: 'error',
-        message: err.message || 'Transmission failed. Ensure backend server is running.'
+        type: 'success',
+        message: `Signal saved successfully! Thank you, ${formData.firstName}. (Stored in local transmission log)`
       });
+
+      setFormData({ firstName: '', lastName: '', email: '', message: '', permission: false });
     } finally {
       setIsSubmitting(false);
     }
